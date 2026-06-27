@@ -1,14 +1,14 @@
 import express, { Request, Response } from "express";
 import path from "path";
 import { GoogleGenAI } from "@google/genai";
-import { User, UserType, Job, Application, Interview } from "./src/types.ts";
+import { User, UserType, Job, Application, Interview } from "./src/types";
 
 // Setup server App
 const app = express();
 const PORT = 3000;
 
 app.use((req, res, next) => {
-  if (req.body && typeof req.body === "object") {
+  if (req.body !== undefined) {
     next();
   } else {
     express.json()(req, res, next);
