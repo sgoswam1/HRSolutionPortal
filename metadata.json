@@ -1,0 +1,6 @@
+{
+  "name": "HR Solutions Portal",
+  "description": "An elegant, comprehensive portal for Candidates, Companies, and Interviewers. Port of legacy C# ASP.NET MVC and Java REST APIs with a dynamic developer playground.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
