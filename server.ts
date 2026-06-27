@@ -9,6 +9,17 @@ const PORT = 3000;
 
 app.use(express.json());
 
+// Normalize req.url to start with /api for Vercel routing
+app.use((req, res, next) => {
+  if (process.env.VERCEL) {
+    const url = req.url || "/";
+    if (!url.startsWith("/api")) {
+      req.url = "/api" + url;
+    }
+  }
+  next();
+});
+
 // In-Memory Database State
 const userTypes: UserType[] = [
   { UserTypeId: 1, UserTypeCode: "CAND", UserTypeDesc: "Candidate" },
