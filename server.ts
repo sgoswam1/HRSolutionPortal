@@ -1,15 +1,21 @@
 import express, { Request, Response } from "express";
 import path from "path";
 import { GoogleGenAI } from "@google/genai";
-import { User, UserType, Job, Application, Interview } from "./src/types";
+import { User, UserType, Job, Application, Interview } from "./src/types.ts";
 
 // Setup server App
 const app = express();
 const PORT = 3000;
 
-app.use(express.json());
+app.use((req, res, next) => {
+  if (req.body && typeof req.body === "object") {
+    next();
+  } else {
+    express.json()(req, res, next);
+  }
+});
 
-// Normalize req.url to start with /api for Vercel routing
+// Normalize req.url for Vercel routing
 app.use((req, res, next) => {
   if (process.env.VERCEL) {
     const url = req.url || "/";
