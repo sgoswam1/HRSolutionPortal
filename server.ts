@@ -20,6 +20,14 @@ app.use((req, res, next) => {
   next();
 });
 
+// Ensure req.body is at least an empty object to prevent TypeError on destructuring
+app.use((req, res, next) => {
+  if (!req.body) {
+    req.body = {};
+  }
+  next();
+});
+
 // In-Memory Database State
 const userTypes: UserType[] = [
   { UserTypeId: 1, UserTypeCode: "CAND", UserTypeDesc: "Candidate" },
@@ -1105,6 +1113,16 @@ app.post("/api/gemini/parse-pdf", async (req: Request, res: Response) => {
     logRequest(req, mockParsing);
     return res.json(mockParsing);
   }
+});
+
+// Global Error Handler Middleware
+app.use((err: any, req: Request, res: Response, next: any) => {
+  console.error("Express Error Handler caught:", err);
+  res.status(500).json({
+    error: "Internal Server Error",
+    message: err.message || String(err),
+    stack: process.env.NODE_ENV !== "production" ? err.stack : undefined
+  });
 });
 
 // ----------------------------------------------------
