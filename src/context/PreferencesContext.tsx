@@ -16,6 +16,7 @@ export interface ThemeStyles {
   badge: string;
   buttonSecondary: string;
   buttonPrimary: string;
+  buttonAccent: string;
 }
 
 interface PreferencesContextProps {
@@ -45,6 +46,7 @@ const themeConfigurations: Record<ThemeType, ThemeStyles> = {
     badge: "bg-slate-100/80 text-slate-700 border-slate-200/50",
     buttonSecondary: "bg-white hover:bg-slate-50/80 text-slate-700 hover:text-slate-900 border-slate-250 hover:border-slate-300/90 shadow-2xs transition-all duration-150 active:scale-[0.98]",
     buttonPrimary: "bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white font-extrabold shadow-xs hover:shadow-md hover:shadow-indigo-500/10 transition-all duration-150 active:scale-[0.98] cursor-pointer",
+    buttonAccent: "border-indigo-100 bg-indigo-50/70 text-indigo-600 hover:bg-indigo-50",
   },
   dark: {
     bg: "bg-[#090e17] text-slate-300",
@@ -58,6 +60,7 @@ const themeConfigurations: Record<ThemeType, ThemeStyles> = {
     badge: "bg-[#121824] text-slate-300 border-slate-800/50",
     buttonSecondary: "bg-[#121824] border-slate-800/80 text-slate-300 hover:bg-[#1c263b] hover:text-white hover:border-slate-700 shadow-2xs transition-all duration-150 active:scale-[0.98]",
     buttonPrimary: "bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white font-extrabold shadow-xs hover:shadow-md hover:shadow-indigo-500/20 transition-all duration-150 active:scale-[0.98] cursor-pointer",
+    buttonAccent: "border-indigo-900 bg-indigo-950/30 text-indigo-400 hover:bg-indigo-950/60",
   },
   sepia: {
     bg: "bg-[#f4efe1] text-[#4a3f35]",
@@ -71,6 +74,7 @@ const themeConfigurations: Record<ThemeType, ThemeStyles> = {
     badge: "bg-[#f4efe1]/80 text-[#5c4f42] border-[#e3d5c5]/60",
     buttonSecondary: "bg-[#fdfbf7] border-[#e3d5c5] text-[#4a3f35] hover:bg-[#f4efe1]/40 hover:text-[#2e241b] hover:border-[#c5b19c] shadow-2xs transition-all duration-150 active:scale-[0.98]",
     buttonPrimary: "bg-[#5c4f42] hover:bg-[#4a3f35] active:bg-[#3b322a] text-[#fdfbf7] font-extrabold shadow-xs hover:shadow-md hover:shadow-[#5c4f42]/10 transition-all duration-150 active:scale-[0.98] cursor-pointer",
+    buttonAccent: "border-[#c5b19c] bg-[#ece4d4] text-[#5c4f42] hover:bg-[#e3d5c5]",
   },
 };
 
@@ -107,6 +111,7 @@ export const PreferencesProvider: React.FC<{ children: React.ReactNode }> = ({ c
 
   // Update body styles when theme changes to keep background integrated
   useEffect(() => {
+    document.documentElement.classList.toggle("dark", theme === "dark");
     if (theme === "dark") {
       document.body.style.backgroundColor = "#090e17";
       document.body.style.color = "#cbd5e1";
