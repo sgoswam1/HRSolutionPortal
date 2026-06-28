@@ -9,6 +9,7 @@ import PreferencesModal from "./components/PreferencesModal";
 import { usePreferences } from "./context/PreferencesContext";
 import { User, UserType } from "./types";
 import { Briefcase, Key, ShieldCheck, Mail, AlertCircle, RefreshCw, Layers, CheckCircle, AlertTriangle, Info } from "lucide-react";
+import { Analytics } from '@vercel/analytics/react';
 
 export default function App() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
@@ -709,6 +710,7 @@ export default function App() {
           </button>
         </div>
       )}
+      <Analytics />
     </div>
   );
 }
