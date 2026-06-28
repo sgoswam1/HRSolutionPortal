@@ -90,7 +90,7 @@ export default function Navbar({
           <button
             onClick={onOpenConsole}
             title="Open Developer API Playground"
-            className="flex items-center gap-1.5 rounded-lg border border-indigo-100 dark:border-indigo-900 bg-indigo-50/70 dark:bg-indigo-950/30 px-3 py-1.5 font-mono text-xs text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/60 transition cursor-pointer font-medium"
+            className={`flex items-center gap-1.5 rounded-lg border px-3 py-1.5 font-mono text-xs font-medium cursor-pointer transition ${styles.buttonAccent}`}
           >
             <Terminal className="h-4 w-4" />
             <span className="hidden lg:inline">Developer Console</span>
