@@ -886,7 +886,7 @@ export default function InterviewerDashboard({ currentUser }: InterviewerDashboa
                   value={evalNotes}
                   onChange={(e) => setEvalNotes(e.target.value)}
                   placeholder="Summarize coding competencies, design architecture, or communication flags..."
-                  className={`w-full rounded-xl border px-3 py-2 text-xs focus:outline-none focus:border-purple-500 ${styles.input} bg-white dark:bg-slate-900`}
+                  className={`w-full rounded-xl border px-3 py-2 text-xs focus:outline-none focus:border-purple-500 ${styles.input}`}
                 />
               </div>
 
