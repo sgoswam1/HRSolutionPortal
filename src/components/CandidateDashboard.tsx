@@ -465,7 +465,7 @@ export default function CandidateDashboard({ currentUser, onRefreshUser }: Candi
               placeholder="Search jobs, skills, companies..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className={`rounded-xl border px-4 py-2 text-xs focus:outline-none focus:border-sky-500 w-full sm:max-w-xs transition ${styles.input} bg-white dark:bg-slate-900`}
+              className={`rounded-xl border px-4 py-2 text-xs focus:outline-none focus:border-sky-500 w-full sm:max-w-xs transition ${styles.input}`}
             />
           </div>
 
